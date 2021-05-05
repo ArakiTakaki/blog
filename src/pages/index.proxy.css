@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.planet {
+  color: var(--planet-color, blue);
+  cursor: pointer;
+}
+
+.hoge {
+  background: red;
+}
+

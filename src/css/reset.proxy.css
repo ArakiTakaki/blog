@@ -1,0 +1,38 @@
+:host {
+  font-size: 10px;
+}
+
+blockquote,
+dd,
+dl,
+fieldset,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+legend,
+p,
+pre,
+button,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+button {
+  background-color: transparent;
+  outline: 0;
+  font-size: 100%;
+  font-weight: norma;
+  border: 1px solid #000;
+  cursor: pointer;
+}
