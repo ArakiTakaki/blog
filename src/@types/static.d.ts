@@ -1,5 +1,6 @@
 declare module "*.css";
 declare module "*.md";
+declare module "*.wasm";
 
 interface CSSStyleSheet {
   replace(text: string): Promise<CSSStyleSheet>;

@@ -13,10 +13,72 @@
       margin: 0;
       padding: 0;
     }
+
+    infinite-carousel-wc {
+      overflow: hidden;
+    }
+    infinite-carousel-wc::-webkit-scrollbar{
+      display: none;
+    }
+    .content {
+      min-width: 160px;
+      height: 260px;
+      background-color: #aaa;
+      margin: 20px;
+      box-sizing: border-box;
+    }
+    content-carousel {
+      border: 1px solid #000;
+      --scroll-snap-align: start;
+    }
+
   </style>
 </head>
 <body>
-  <my-element greeting="lit"></my-element>
-  <my-article></my-article>
+
+  <content-carousel>
+    <item-carousel>
+      <p class="content"> test </p>
+    </item-carousel>
+    <item-carousel>
+      <p class="content"> test </p>
+    </item-carousel>
+    <item-carousel>
+      <p class="content"> test </p>
+    </item-carousel>
+    <item-carousel>
+      <p class="content"> test </p>
+    </item-carousel>
+    <item-carousel>
+      <p class="content"> test </p>
+    </item-carousel>
+    <item-carousel>
+      <p class="content"> test </p>
+    </item-carousel>
+    <item-carousel>
+      <p class="content" id="3"> test </p>
+    </item-carousel>
+  </content-carousel>
+  <content-accordion opened>
+    <div slot="title">
+      <h1>test accordion title</h1>
+    </div>
+    <div slot="content">
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+      <p> test </p>
+    </div>
+  </content-accordion>
 </body>
 </html>

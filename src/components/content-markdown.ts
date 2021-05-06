@@ -5,7 +5,7 @@ import styles from './githubMarkdown.proxy.css';
 import marked from 'marked';
 import { ResetCSS } from '../css';
 
-@customElement("markdown-content")
+@customElement("content-markdown")
 export class MyElement extends LitElement {
   @property() content = "";
   static styles = [
@@ -13,7 +13,6 @@ export class MyElement extends LitElement {
     styles,
   ];
   render() {
-    console.log(this);
     return html`
       <div class="markdown-body">
         ${unsafeHTML(marked(this.content || ''))}

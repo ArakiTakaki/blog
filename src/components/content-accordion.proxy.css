@@ -1,0 +1,21 @@
+:host {
+}
+
+.base {
+  display: flex;
+  flex-direction: ccolumn;
+  transition-duration: var(--accordion-transition-duration, 300ms);
+  transition-delay: var(--accordion-transition-delay, 0ms);
+  transform-style: opacity, visibility, height;
+  overflow: hidden;
+}
+
+.open {
+  visibility: visible;
+  opacity: 1;
+}
+.close {
+  visibility: hidden;
+  opacity: 0;
+}
+

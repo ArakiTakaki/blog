@@ -1,3 +1,8 @@
 import 'reset-css';
-import './pages/index.ts';
-import './pages/article.ts';
+import './lib/sqlite3';
+import 'infinite-carousel-wc'
+import './components/content-accordion';
+import './components/content-carousel';
+import './components/item-carousel';
+import './components/content-markdown';
+

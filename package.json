@@ -4,16 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build"
+    "start": "snowpack dev --polyfill-node",
+    "build": "snowpack build --polyfill-node"
   },
   "dependencies": {
+    "infinite-carousel-wc": "^0.5.4",
     "lit": "^2.0.0-rc.1",
     "marked": "^2.0.3",
-    "reset-css": "^5.0.1"
+    "reset-css": "^5.0.1",
+    "sql.js": "^1.5.0"
   },
   "devDependencies": {
     "@types/marked": "^2.0.2",
+    "@types/sql.js": "^1.4.2",
     "@types/stylus": "^0.48.34",
     "plugin-css-export-string": "file:./plugins/plugin-css-export-string",
     "snowpack": "^3.3.7",
