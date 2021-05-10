@@ -1,7 +1,7 @@
 import {LitElement, html } from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import styles from './githubMarkdown.proxy.css';
+import styles from './github-markdown.proxy.css';
 import marked from 'marked';
 import { ResetCSS } from '../css';
 
