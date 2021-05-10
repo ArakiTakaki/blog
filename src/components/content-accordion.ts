@@ -9,14 +9,15 @@ import {classMap} from 'lit/directives/class-map.js';
 export class ContentAccordion extends LitElement {
 
   private refContent = createRef<HTMLDivElement>();
+  private mutation: MutationObserver | null = null;
   accordionHeight = 0;
   isInitialized = false;
+  isLoaded = false;
   @property({ type: Boolean }) opened = false;
   @property({ type: Boolean }) disabled = false;
 
   static styles = [
     styles,
-    // ResetCSS,
   ];
 
   constructor() {
@@ -25,26 +26,37 @@ export class ContentAccordion extends LitElement {
 
   updated() {
     if (this.refContent.value == null) return;
+    const elTarget = this.refContent.value;
+
+    if (this.mutation == null) {
+      this.mutation = new MutationObserver(() => {
+        this.elementStyleUpdate();
+      });
+
+      this.mutation.observe(elTarget, { attributes: true, childList: true, subtree: true });
+
+      const classes = elTarget.classList.values();
+      for (let classItem of classes) {
+        if (classItem === 'animation') return;
+      }
+
+      elTarget.classList.add('animation');
+    }
+  }
+  elementStyleUpdate() {
+    if (this.refContent.value == null) return;
+    const elTarget = this.refContent.value;
     this.accordionHeight = this.refContent.value.scrollHeight;
     if (this.opened) {
-      this.refContent.value.style.height = `${this.accordionHeight}px`;
+      elTarget.style.height = `${this.accordionHeight}px`;
     } else {
-      this.refContent.value.style.height = '0px'
+      elTarget.style.height = '0px'
     }
   }
 
   changeState() {
     if (this.disabled) return;
     this.opened = !this.opened;
-  }
-
-  transitionEnd() {
-    // if (this.refContent.value == null) return;
-    // if (this.opened) {
-    //   this.refContent.value.style.display = 'none';
-    // } else {
-    //   this.refContent.value.style.display = 'none';
-    // }
   }
 
   render() {
@@ -56,7 +68,7 @@ export class ContentAccordion extends LitElement {
 
     return html`
 <slot name="title" @click=${this.changeState}></slot>
-<div ref=${ref(this.refContent)} class=${classMap(classes)} @transitionend=${this.transitionEnd}>
+<div ref=${ref(this.refContent)} class=${classMap(classes)}>
   <slot name="content"></slot>
 </div>
 `;

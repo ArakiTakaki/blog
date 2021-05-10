@@ -13,9 +13,9 @@ export class ContentCarousel extends LitElement {
 
   render() {
     return html`
-      <div class="carousel-wrap">
-        <slot class="carousel"></slot>
-      <div>
+<div class="carousel-wrap">
+  <slot class="carousel"></slot>
+<div>
     `;
   }
 }

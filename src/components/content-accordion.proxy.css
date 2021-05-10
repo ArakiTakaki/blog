@@ -3,10 +3,7 @@
 
 .base {
   display: flex;
-  flex-direction: ccolumn;
-  transition-duration: var(--accordion-transition-duration, 300ms);
-  transition-delay: var(--accordion-transition-delay, 0ms);
-  transform-style: opacity, visibility, height;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -17,5 +14,11 @@
 .close {
   visibility: hidden;
   opacity: 0;
+}
+
+.animation {
+  transition-duration: var(--accordion-transition-duration, 300ms);
+  transition-delay: var(--accordion-transition-delay, 0ms);
+  transform-style: opacity, visibility, height;
 }
 
