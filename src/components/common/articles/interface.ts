@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { LinkProps } from '../../Link';
 export type ArticleContextProps = {
-    title: string;
+    title?: string;
     description?: string;
 } & LinkProps;
 

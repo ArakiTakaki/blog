@@ -20,6 +20,9 @@ const useResizeObserver = (ref: RefObject<HTMLElement>, cb: (entries: ResizeObse
     };
   }, [ref]);
 }
+// const useIntersectionObserver = (ref: RefObject) => {
+// ほげ
+// }
 
 export const useCalcHeight = (ref: RefObject<HTMLElement>) => {
   return useCallback(() => {
@@ -62,11 +65,11 @@ const Article: VFC<ArticleProps> = ({
   })(type);
 
   return (
-    <ArticleContext.Provider value={state}>
-      <div ref={refWrap}>
+    <div ref={refWrap}>
+      <ArticleContext.Provider value={state}>
         {component}
-      </div>
-    </ArticleContext.Provider>
+      </ArticleContext.Provider>
+    </div>
   );
 };
 
