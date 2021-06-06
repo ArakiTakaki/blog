@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import React, { FC } from 'react';
 import Article from '../components/common/articles/article';
 import { githubRepositoryLoader } from '../loaders/article/githubRepositoryLoader';
@@ -9,6 +9,7 @@ export interface IndexProps {
 // https://api.github.com/repos/team-lab/walkontable
 const teamLabRepositoryLoader = githubRepositoryLoader('team-lab');
 const arakiTakakiRepositoryLoader = githubRepositoryLoader('ArakiTakaki');
+
 const Index: FC<IndexProps> = ({ text }) => {
   return (
     <div>
@@ -19,9 +20,8 @@ const Index: FC<IndexProps> = ({ text }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<IndexProps, never> = async () => {
+export const getServerSideProps: GetServerSideProps<IndexProps, never> = async () => {
   return {
-    revalidate: 10,
     props: {
       text: 'hello react',
     },

@@ -7,6 +7,7 @@ interface ArticleProps {
   id: string;
   loader?: (id: string) => Promise<ArticleContextProps>;
   type?: 'list' | 'card-s' | 'card-m' | 'card-l';
+  initialState?: ArticleContextProps;
 }
 
 const useResizeObserver = (ref: RefObject<HTMLElement>, cb: (entries: ResizeObserverEntry[]) => void) => {
@@ -35,9 +36,10 @@ const Article: VFC<ArticleProps> = ({
   id,
   type = 'list',
   loader,
+  initialState,
 }) => {
   const refWrap = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState<ArticleContextProps>({
+  const [state, setState] = useState<ArticleContextProps>(initialState || {
     title: '',
   });
 
