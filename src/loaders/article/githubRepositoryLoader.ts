@@ -1,6 +1,6 @@
-import { ArticleContextProps } from "../components/common/articles/article";
+import { ArticleContextProps } from "../../components/common/articles/interface";
 
-interface RootObject {
+interface GithubRepository {
     id: number;
     node_id: string;
     name: string;
@@ -180,11 +180,13 @@ interface RootObject {
   }
 
 // https://api.github.com/repos/team-lab/walkontable
-export const githubRepositoryLoader = async (id: string): Promise<ArticleContextProps> => {
-    const res = await fetch(('https://api.github.com/repos/team-lab/:id').replace(':id', id));
-    const result: RootObject = await res.json();
+export const githubRepositoryLoader = (repository: string) => async (id: string): Promise<ArticleContextProps> => {
+    const res = await fetch(('https://api.github.com/repos/:repository/:id').replace(':id', id).replace(':repository', repository));
+    const result: GithubRepository = await res.json();
     return {
         title: result.full_name,
         description: result.description,
+        href: result.html_url,
+        type: 'external',
     };
   }

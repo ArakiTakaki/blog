@@ -1,24 +1,12 @@
-import React, { createContext, RefObject, useCallback, useContext, useEffect, useRef, useState, VFC } from 'react';
+import React, { RefObject, useCallback, useEffect, useRef, useState, VFC } from 'react';
+import { ArticleContext, ArticleContextProps } from './interface';
 import List from './view/List';
 import MSize from './view/MSize';
-
-export interface ArticleContextProps {
-  title: string;
-  description?: string;
-}
 
 interface ArticleProps {
   id: string;
   loader?: (id: string) => Promise<ArticleContextProps>;
   type?: 'list' | 'card-s' | 'card-m' | 'card-l';
-}
-
-export const ArticleContext = createContext<ArticleContextProps>({
-  title: '',
-});
-
-export const useArticleProps = () => {
-  return useContext(ArticleContext);
 }
 
 const useResizeObserver = (ref: RefObject<HTMLElement>, cb: (entries: ResizeObserverEntry[]) => void) => {
@@ -57,7 +45,6 @@ const Article: VFC<ArticleProps> = ({
     if (loader == null) return;
     loader(id)
       .then((val) => {
-        console.log(val);
         setState(val);
         updateHeight();
       });
