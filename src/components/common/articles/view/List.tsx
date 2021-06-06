@@ -1,6 +1,6 @@
 import React from 'react'
 import { useArticleProps } from '../interface';
-import Link from '../../../Link';
+import Link from '../../Link';
 import styles from './List.module.css';
 
 const List = () => {

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { AppProps } from 'next/app';
+import 'reset-css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (

@@ -8,6 +8,7 @@ interface ArticleProps {
   loader?: (id: string) => Promise<ArticleContextProps>;
   type?: 'list' | 'card-s' | 'card-m' | 'card-l';
   initialState?: ArticleContextProps;
+  isShow?: boolean;
 }
 
 const useResizeObserver = (ref: RefObject<HTMLElement>, cb: (entries: ResizeObserverEntry[]) => void) => {
@@ -21,9 +22,23 @@ const useResizeObserver = (ref: RefObject<HTMLElement>, cb: (entries: ResizeObse
     };
   }, [ref]);
 }
-// const useIntersectionObserver = (ref: RefObject) => {
-// ほげ
-// }
+
+const useIntersectionObserver = (ref: RefObject<HTMLElement>, cb: () => void) => {
+  useEffect(() => {
+    if (ref.current == null) return;
+    const observer = new IntersectionObserver((e) => {
+      if (e[0].isIntersecting) {
+        cb();
+      }
+    }, {
+      rootMargin: '-40% 0px',
+    });
+    observer.observe(ref.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, [ref]);
+}
 
 export const useCalcHeight = (ref: RefObject<HTMLElement>) => {
   return useCallback(() => {
@@ -39,6 +54,7 @@ const Article: VFC<ArticleProps> = ({
   initialState,
 }) => {
   const refWrap = useRef<HTMLDivElement>(null);
+
   const [state, setState] = useState<ArticleContextProps>(initialState || {
     title: '',
   });
